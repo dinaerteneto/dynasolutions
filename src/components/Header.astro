@@ -10,7 +10,7 @@ const links = [
   <nav class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
     <Wordmark class="text-lg" />
     <div class="flex items-center gap-6 text-sm text-text-secondary">
-      {links.map((l) => <a href={l.href} class="hover:text-text-primary transition">{l.label}</a>)}
+      {links.map((l) => <a href={l.href} class="nav-link hover:text-text-primary transition">{l.label}</a>)}
       <a href="/contato" class="rounded-lg bg-bg-raised px-4 py-2 text-text-primary hover:bg-bg-hover transition">Contato</a>
     </div>
   </nav>
