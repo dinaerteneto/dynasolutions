@@ -1,0 +1,22 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+// NOTE: troque /me-placeholder.svg pela sua foto real (ex.: /me.jpg) antes do lançamento.
+const PHOTO = "/me-placeholder.svg";
+---
+<section id="sobre" class="mx-auto max-w-6xl px-6 py-20">
+  <SectionHeading num="01" title="Sobre mim" />
+  <div class="grid md:grid-cols-3 gap-12 items-start">
+    <div class="md:col-span-2 space-y-4 text-text-secondary text-lg leading-relaxed" data-reveal>
+      <p>Sou engenheiro de software sênior full-stack. Ao longo dos anos construí sistemas em produção com <span class="text-text-primary">Laravel, Node.js, Go, Ruby on Rails, Python, .NET</span> e <span class="text-text-primary">Flutter</span> — de MVPs a arquiteturas orientadas a eventos e multi-tenant.</p>
+      <p>Minha forma de trabalhar integra <span class="text-accent">IA ao processo de engenharia</span>: uso para acelerar o que é repetível e reservo o julgamento sênior para o que importa — arquitetura, segurança e decisões de produto.</p>
+      <p>Acredito em escopos claros, entregas incrementais e evidência do que funciona. A <span class="text-text-primary">Dyna Solutions</span> é como ofereço esse trabalho de forma independente.</p>
+      <a href="/sobre" class="inline-block pt-2 text-accent font-mono text-sm hover:underline">Saiba mais sobre mim →</a>
+    </div>
+    <div class="flex justify-center md:justify-end" data-reveal>
+      <div class="photo-frame w-60 max-w-full">
+        <img src={PHOTO} alt="Foto de perfil" width="240" height="240" class="w-full h-auto" />
+        <span class="photo-tint"></span>
+      </div>
+    </div>
+  </div>
+</section>

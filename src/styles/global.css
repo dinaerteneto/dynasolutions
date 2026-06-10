@@ -55,3 +55,54 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .nav-link::after { transition: none; }
 }
+
+/* Header: linha suave que só aparece ao rolar (some no topo) */
+#site-header {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+#site-header.scrolled {
+  border-bottom-color: color-mix(in srgb, var(--color-border-subtle) 60%, transparent);
+  box-shadow: 0 10px 30px -12px rgba(2, 12, 27, 0.65);
+}
+
+/* Efeito assinatura na foto: tom menta que some no hover + moldura deslocada */
+.photo-frame {
+  position: relative;
+  border-radius: 10px;
+}
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-accent);
+  border-radius: 10px;
+  translate: 16px 16px;
+  z-index: -1;
+  transition: translate 0.25s ease;
+}
+.photo-frame img {
+  border-radius: 10px;
+  display: block;
+  filter: grayscale(35%) contrast(1.05);
+  transition: filter 0.3s ease;
+}
+.photo-tint {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.photo-frame:hover img { filter: none; }
+.photo-frame:hover .photo-tint { opacity: 0; }
+.photo-frame:hover::after { translate: 10px 10px; }
+@media (prefers-reduced-motion: reduce) {
+  .photo-frame img,
+  .photo-tint,
+  .photo-frame::after,
+  #site-header { transition: none; }
+}
