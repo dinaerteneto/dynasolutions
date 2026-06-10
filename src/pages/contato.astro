@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+const WHATSAPP = "5500000000000"; // NOTE: replace with real number before launch
+const EMAIL = "contato@dynasolutions.com.br"; // NOTE: confirm address
+---
+<Base title="Contato · Dyna Solutions">
+  <section class="mx-auto max-w-2xl px-6 py-20">
+    <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Vamos conversar</h1>
+    <p class="mt-4 text-text-secondary" data-reveal>Conte seu desafio. Respondo pessoalmente.</p>
+    <form action="https://api.web3forms.com/submit" method="POST" class="mt-10 space-y-4" data-reveal>
+      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY" />
+      <input type="hidden" name="subject" value="Novo contato pelo site Dyna Solutions" />
+      <input required name="name" placeholder="Seu nome" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
+      <input required type="email" name="email" placeholder="Seu e-mail" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
+      <textarea required name="message" rows="5" placeholder="Seu desafio / projeto" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent"></textarea>
+      <button type="submit" class="rounded-xl bg-accent text-accent-ink font-bold px-6 py-3 hover:brightness-110 transition">Enviar →</button>
+    </form>
+    <div class="mt-8 flex flex-wrap gap-4 text-sm" data-reveal>
+      <a href={`https://wa.me/${WHATSAPP}`} class="text-accent hover:underline">WhatsApp</a>
+      <a href={`mailto:${EMAIL}`} class="text-accent hover:underline">{EMAIL}</a>
+    </div>
+  </section>
+</Base>
