@@ -16,6 +16,12 @@ const { title = "Dyna Solutions", description = "Engenharia de software sênior 
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org", "@type": "Organization",
+      name: "Dyna Solutions", url: "https://dynasolutions.com.br",
+      description: "Engenharia de software sênior + IA.",
+    })} />
+    <!-- Analytics: enable via Cloudflare Web Analytics in the Pages dashboard at deploy time (no script needed). -->
   </head>
   <body class="bg-bg-base text-text-primary">
     <SideRails />
