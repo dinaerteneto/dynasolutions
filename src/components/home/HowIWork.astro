@@ -1,0 +1,25 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+const steps = [
+  { n: "01", t: "Diagnóstico", d: "Entendo o problema e o contexto antes de propor solução." },
+  { n: "02", t: "Tech spec", d: "Traduzo requisitos em um plano técnico claro e acordado." },
+  { n: "03", t: "Execução em escopos", d: "Entrego em incrementos validados, não num big bang." },
+  { n: "04", t: "Entrega validada", d: "Verificação e handoff com evidência do que funciona." },
+];
+---
+<section class="mx-auto max-w-6xl px-6 py-20">
+  <SectionHeading num="03" title="Como eu trabalho" />
+  <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {steps.map((s) => (
+      <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6" data-reveal>
+        <p class="font-mono text-accent">{s.n}</p>
+        <h3 class="mt-2 font-bold">{s.t}</h3>
+        <p class="mt-2 text-sm text-text-secondary">{s.d}</p>
+      </div>
+    ))}
+  </div>
+  <div class="mt-8 rounded-2xl border border-border-subtle bg-bg-deep/40 p-6" data-reveal>
+    <p class="font-mono text-sm text-accent">// o papel da IA</p>
+    <p class="mt-2 text-text-secondary max-w-3xl">Uso IA para acelerar o que é repetível — sintaxe, configuração, boilerplate — e reservo o julgamento sênior para o que importa: arquitetura, segurança e decisões de produto.</p>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+import Wordmark from "./Wordmark.astro";
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-border-subtle mt-24">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-muted">
+    <Wordmark />
+    <p>© {year} Dyna Solutions · dynasolutions.com.br</p>
+    <a href="/contato" class="text-accent hover:underline">Vamos conversar →</a>
+  </div>
+</footer>

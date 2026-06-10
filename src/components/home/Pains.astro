@@ -1,0 +1,19 @@
+---
+const pains = [
+  { p: "Seu MVP trava antes de sair do papel?", s: "Desenvolvimento de produto sob escopo fechado." },
+  { p: "Falta um sênior pra destravar a arquitetura do time?", s: "Squad de um + diagnóstico técnico." },
+  { p: "Processos manuais consumindo horas da equipe?", s: "Automação & integração de sistemas." },
+  { p: "Insegurança sobre a qualidade/segurança do código?", s: "Diagnóstico técnico independente." },
+];
+---
+<section class="mx-auto max-w-6xl px-6 py-20">
+  <h2 class="text-3xl font-extrabold tracking-tight" data-reveal>Você reconhece algum desses?</h2>
+  <div class="mt-10 grid sm:grid-cols-2 gap-4">
+    {pains.map((x) => (
+      <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6" data-reveal>
+        <p class="font-semibold text-text-primary">{x.p}</p>
+        <p class="mt-2 text-text-secondary flex items-start gap-2"><span class="text-accent">→</span>{x.s}</p>
+      </div>
+    ))}
+  </div>
+</section>

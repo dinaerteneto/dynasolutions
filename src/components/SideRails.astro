@@ -1,0 +1,18 @@
+---
+const GITHUB = "https://github.com/dinaerteneto"; // NOTE: confirm real GitHub URL before launch
+const LINKEDIN = "https://www.linkedin.com/in/SEU-PERFIL"; // NOTE: replace with real LinkedIn URL
+const EMAIL = "contato@dynasolutions.com.br"; // NOTE: confirm real email
+---
+<aside class="hidden lg:flex flex-col items-center gap-5 fixed left-8 bottom-0 z-40">
+  <a href={GITHUB} target="_blank" rel="noopener" aria-label="GitHub" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.9 18.3 5.2 18.3 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+  </a>
+  <a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM7.1 20.5H3.6V9h3.5v11.5zM5.3 7.4a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm15.2 13.1H17V14.8c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.8H9.6V9H13v1.6h.05c.5-.9 1.6-1.8 3.3-1.8 3.5 0 4.2 2.3 4.2 5.3v6.4z"/></svg>
+  </a>
+  <span class="w-px h-24 bg-border-subtle mt-2"></span>
+</aside>
+<aside class="hidden lg:flex flex-col items-center gap-6 fixed right-8 bottom-0 z-40">
+  <a href={`mailto:${EMAIL}`} class="[writing-mode:vertical-rl] font-mono text-xs tracking-widest text-text-secondary hover:text-accent hover:-translate-y-1 transition">{EMAIL}</a>
+  <span class="w-px h-24 bg-border-subtle mt-2"></span>
+</aside>

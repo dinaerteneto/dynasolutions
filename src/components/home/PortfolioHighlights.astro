@@ -1,0 +1,26 @@
+---
+import { projects } from "../../data/projects";
+import SectionHeading from "../SectionHeading.astro";
+const featured = projects.slice(0, 3);
+---
+<section class="bg-bg-deep/40 border-y border-border-subtle">
+  <div class="mx-auto max-w-6xl px-6 py-20">
+    <div class="flex items-center gap-4 mb-10" data-reveal>
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight whitespace-nowrap">
+        <span class="font-mono text-accent text-xl mr-2">02.</span>Portfólio
+      </h2>
+      <span class="h-px bg-border-subtle flex-1"></span>
+      <a href="/portfolio" class="text-accent text-sm hover:underline whitespace-nowrap">Ver todos →</a>
+    </div>
+    <div class="mt-10 grid md:grid-cols-3 gap-4">
+      {featured.map((p) => (
+        <a href={`/portfolio#${p.slug}`} class="rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+          <h3 class="font-bold">{p.name}</h3>
+          <p class="mt-2 text-sm text-text-secondary">{p.context}</p>
+          <p class="mt-3 text-sm text-text-primary"><span class="text-accent">Resultado:</span> {p.result}</p>
+          <ul class="mt-4 flex flex-wrap gap-2">{p.stack.map((t) => <li class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">{t}</li>)}</ul>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
