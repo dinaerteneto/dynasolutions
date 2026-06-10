@@ -1,0 +1,25 @@
+---
+import { projects } from "../../data/projects";
+const featured = projects.slice(0, 3);
+---
+<section class="bg-bg-deep/40 border-y border-border-subtle">
+  <div class="mx-auto max-w-6xl px-6 py-20">
+    <div class="flex items-end justify-between" data-reveal>
+      <div>
+        <p class="font-mono text-sm text-accent">// provas de trabalho</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight">Portfólio</h2>
+      </div>
+      <a href="/portfolio" class="text-accent text-sm hover:underline">Ver todos →</a>
+    </div>
+    <div class="mt-10 grid md:grid-cols-3 gap-4">
+      {featured.map((p) => (
+        <a href={`/portfolio#${p.slug}`} class="rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+          <h3 class="font-bold">{p.name}</h3>
+          <p class="mt-2 text-sm text-text-secondary">{p.context}</p>
+          <p class="mt-3 text-sm text-text-primary"><span class="text-accent">Resultado:</span> {p.result}</p>
+          <ul class="mt-4 flex flex-wrap gap-2">{p.stack.map((t) => <li class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">{t}</li>)}</ul>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
