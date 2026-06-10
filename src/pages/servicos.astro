@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import { services } from "../data/services";
+const details: Record<string, string> = {
+  mvp: "Construo seu produto do zero em escopo fechado, com tech spec acordada, entregas incrementais e foco em algo que vai para produção — não um protótipo descartável.",
+  squad: "Entro como engenheiro sênior no seu time ou agência para destravar entregas, revisar arquitetura e elevar a barra técnica, sem o custo de uma contratação fixa.",
+  automacao: "Conecto sistemas, crio integrações com APIs e webhooks, e automatizo processos manuais usando filas e — quando faz sentido — IA, com gates de validação.",
+  diagnostico: "Uma análise independente da sua arquitetura, código e postura de segurança, com um relatório acionável de riscos e próximos passos. A melhor porta de entrada.",
+};
+---
+<Base title="Serviços · Dyna Solutions">
+  <section class="mx-auto max-w-4xl px-6 py-20">
+    <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Serviços</h1>
+    <div class="mt-12 space-y-6">
+      {services.map((s) => (
+        <article id={s.slug} class="rounded-2xl border border-border-subtle bg-bg-raised p-8 scroll-mt-24" data-reveal>
+          <h2 class="text-2xl font-bold">{s.title}</h2>
+          <p class="mt-2 text-accent">{s.tagline}</p>
+          <p class="mt-4 text-text-secondary">{details[s.slug]}</p>
+          <a href="/contato" class="mt-6 inline-block text-accent hover:underline">Quero conversar sobre isso →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
