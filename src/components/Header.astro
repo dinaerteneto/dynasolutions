@@ -1,17 +1,21 @@
 ---
 import Wordmark from "./Wordmark.astro";
 const links = [
-  { href: "/#servicos", label: "Serviços" },
-  { href: "/portfolio", label: "Portfólio" },
-  { href: "/sobre", label: "Sobre" },
+  { href: "/#servicos", num: "01", label: "Serviços" },
+  { href: "/portfolio", num: "02", label: "Portfólio" },
+  { href: "/sobre", num: "03", label: "Sobre" },
 ];
 ---
 <header class="sticky top-0 z-50 backdrop-blur bg-bg-base/80 border-b border-border-subtle">
-  <nav class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-    <Wordmark class="text-lg" />
-    <div class="flex items-center gap-6 text-sm text-text-secondary">
-      {links.map((l) => <a href={l.href} class="nav-link hover:text-text-primary transition">{l.label}</a>)}
-      <a href="/contato" class="rounded-lg bg-bg-raised px-4 py-2 text-text-primary hover:bg-bg-hover transition">Contato</a>
+  <nav class="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
+    <Wordmark class="text-xl" />
+    <div class="flex items-center gap-8 font-mono text-sm">
+      {links.map((l) => (
+        <a href={l.href} class="nav-link text-text-secondary hover:text-accent transition">
+          <span class="text-accent">{l.num}.</span> {l.label}
+        </a>
+      ))}
+      <a href="/contato" class="text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition">Contato</a>
     </div>
   </nav>
 </header>
