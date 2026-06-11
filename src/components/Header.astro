@@ -9,7 +9,14 @@ const links = [
 <header id="site-header" class="sticky top-0 z-50 backdrop-blur bg-bg-base/80">
   <nav class="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
     <Wordmark class="text-xl" />
-    <div class="flex items-center gap-8 font-mono text-sm">
+    <button id="nav-toggle" class="md:hidden relative z-60 p-2 text-text-secondary hover:text-accent transition" aria-label="Abrir menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line id="ham-top" x1="4" y1="7" x2="20" y2="7"/>
+        <line id="ham-mid" x1="4" y1="12" x2="20" y2="12"/>
+        <line id="ham-bot" x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+    <div id="nav-desktop" class="hidden md:flex md:items-center md:gap-8 font-mono text-sm">
       {links.map((l) => (
         <a href={l.href} class="nav-link text-text-secondary hover:text-accent transition">
           <span class="text-accent">{l.num}.</span> {l.label}
@@ -19,3 +26,52 @@ const links = [
     </div>
   </nav>
 </header>
+<div id="nav-overlay" class="fixed inset-0 z-[100] bg-bg-base/90 backdrop-blur-sm flex-col items-center justify-center gap-10 opacity-0 invisible">
+  <button id="nav-close" class="absolute top-8 right-8 p-2 text-text-secondary hover:text-accent transition" aria-label="Fechar menu">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/>
+    </svg>
+  </button>
+  {links.map((l) => (
+    <a href={l.href} class="nav-link text-2xl font-semibold text-text-secondary hover:text-accent transition">
+      <span class="text-accent font-mono text-lg">{l.num}.</span> {l.label}
+    </a>
+  ))}
+  <a href="/contato" class="text-accent border-2 border-accent rounded px-8 py-3 hover:bg-accent/10 transition text-lg font-semibold">Contato</a>
+</div>
+<style>
+  #nav-overlay {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .nav-overlay-open { opacity: 1 !important; visibility: visible !important; display: flex !important; }
+</style>
+<script>
+  const btn = document.getElementById("nav-toggle");
+  const closeBtn = document.getElementById("nav-close");
+  const overlay = document.getElementById("nav-overlay");
+  let scrollY = 0;
+  function closeMenu() {
+    overlay.classList.remove("nav-overlay-open");
+    document.body.classList.remove("overflow-hidden", "fixed", "inset-0", "w-full");
+    window.scrollTo(0, scrollY);
+  }
+  function toggleMenu() {
+    const open = overlay.classList.contains("nav-overlay-open");
+    if (!open) scrollY = window.scrollY;
+    overlay.classList.toggle("nav-overlay-open");
+    document.body.classList.toggle("overflow-hidden", !open);
+    document.body.classList.toggle("fixed", !open);
+    document.body.classList.toggle("inset-0", !open);
+    document.body.classList.toggle("w-full", !open);
+  }
+  if (btn && overlay) {
+    btn.addEventListener("click", toggleMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    overlay.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", closeMenu);
+    });
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeMenu();
+    });
+  }
+</script>
