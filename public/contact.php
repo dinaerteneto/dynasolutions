@@ -1,6 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$autoload = __DIR__ . '/../vendor/autoload.php';
+if (!file_exists($autoload)) {
+    error_log('[contact.php] vendor/autoload.php not found at: ' . $autoload);
+    header('Location: /contato?status=error&msg=' . urlencode('Erro de config. Contate o admin.'));
+    exit;
+}
+
+require_once $autoload;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -29,7 +36,20 @@ if (!empty($errors)) {
     exit;
 }
 
-$config = require __DIR__ . '/../config/email.php';
+$configPath = __DIR__ . '/../config/email.php';
+if (!file_exists($configPath)) {
+    error_log('[contact.php] config/email.php not found');
+    header('Location: /contato?status=error&msg=' . urlencode('Erro de config. Contate o admin.'));
+    exit;
+}
+
+$config = require $configPath;
+
+if (empty($config['password'])) {
+    error_log('[contact.php] SMTP password is empty');
+    header('Location: /contato?status=error&msg=' . urlencode('Erro de config. Contate o admin.'));
+    exit;
+}
 
 $mail = new PHPMailer(true);
 
@@ -54,6 +74,11 @@ try {
     header('Location: /contato?status=success#form');
     exit;
 } catch (Exception $e) {
+    error_log('[contact.php] PHPMailer error: ' . $e->getMessage());
+    header('Location: /contato?status=error&msg=' . urlencode('Erro ao enviar. Tente novamente mais tarde.'));
+    exit;
+} catch (\Throwable $e) {
+    error_log('[contact.php] Unexpected error: ' . $e->getMessage());
     header('Location: /contato?status=error&msg=' . urlencode('Erro ao enviar. Tente novamente mais tarde.'));
     exit;
 }
