@@ -3,24 +3,46 @@ import { projects } from "../../data/projects";
 import SectionHeading from "../SectionHeading.astro";
 const featured = projects.slice(0, 3);
 ---
+
 <section class="bg-bg-deep/40 border-y border-border-subtle">
   <div class="mx-auto max-w-6xl px-6 py-20">
-    <div class="flex items-center gap-4 mb-12" data-reveal>
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight whitespace-nowrap">
-        <span class="font-mono text-accent text-2xl mr-2">03.</span>Portfólio
-      </h2>
-      <span class="h-px bg-border-subtle flex-1"></span>
-      <a href="/portfolio" class="text-accent text-sm hover:underline whitespace-nowrap">Ver todos →</a>
+    <SectionHeading num="02" title="Coisas que construí" />
+
+    <div class="mt-10 space-y-24">
+      {featured.map((p, i) => {
+        const isEven = i % 2 === 0;
+        return (
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center" data-reveal>
+            <a href={p.url || `/portfolio#${p.slug}`} class={`relative group rounded-2xl overflow-hidden border border-border-subtle bg-bg-deep aspect-video ${isEven ? "" : "md:order-2"}`}>
+              {p.screenshot ? (
+                <img src={p.screenshot} alt={p.name} class="w-full h-full object-cover group-hover:scale-105 transition duration-500 bg-bg-deep grayscale group-hover:grayscale-0" />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-text-muted font-mono text-sm bg-bg-deep">screenshot</div>
+              )}
+              <div class="absolute inset-0 bg-bg-base/30 group-hover:opacity-0 transition duration-500"></div>
+            </a>
+            <div class={`relative z-10 ${isEven ? "md:-ml-12 text-right" : "md:-mr-12 text-left"} ${!isEven ? "md:order-1" : ""}`}>
+              <p class="font-mono text-sm text-accent">{p.anonymized ? "Caso anonimizado" : "Projeto em destaque"}</p>
+              <h3 class="mt-1 text-2xl font-extrabold tracking-tight">
+                <a href={p.url || `/portfolio#${p.slug}`} class="hover:text-accent transition">{p.name}</a>
+              </h3>
+              <div class="mt-4 rounded-2xl bg-bg-raised/90 backdrop-blur p-6 border border-border-subtle">
+                <p class="text-text-secondary text-sm leading-relaxed">{p.context}</p>
+                <p class="mt-3 text-text-secondary text-sm leading-relaxed"><span class="text-accent font-semibold">Resultado:</span> {p.result}</p>
+              </div>
+              <ul class={`mt-4 flex flex-wrap gap-2 ${isEven ? "justify-end" : "justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
+              <div class={`mt-3 flex gap-4 ${isEven ? "justify-end" : "justify-start"}`}>
+                {p.url && <a href={p.url} target="_blank" class="text-accent hover:underline text-sm font-mono">Live →</a>}
+                <a href={`/portfolio#${p.slug}`} class="text-text-secondary hover:text-accent transition text-sm font-mono">Detalhes →</a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
-    <div class="mt-10 grid md:grid-cols-3 gap-4">
-      {featured.map((p) => (
-        <a href={`/portfolio#${p.slug}`} class="rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
-          <h3 class="font-bold">{p.name}</h3>
-          <p class="mt-2 text-sm text-text-secondary">{p.context}</p>
-          <p class="mt-3 text-sm text-text-primary"><span class="text-accent">Resultado:</span> {p.result}</p>
-          <ul class="mt-4 flex flex-wrap gap-2">{p.stack.map((t) => <li class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">{t}</li>)}</ul>
-        </a>
-      ))}
+
+    <div class="mt-16 text-center" data-reveal>
+      <a href="/portfolio" class="inline-block rounded-xl border border-accent text-accent font-semibold px-6 py-3 hover:bg-accent/10 transition font-mono text-sm">Ver todos os projetos →</a>
     </div>
   </div>
 </section>

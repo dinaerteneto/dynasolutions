@@ -343,14 +343,14 @@ const stacks = ["Laravel", "Node.js", "Go", "Ruby on Rails", "Flutter", "Supabas
 ---
 <section class="border-y border-border-subtle bg-bg-deep/40">
   <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center gap-6 justify-between" data-reveal>
-    <p class="text-text-secondary"><span class="text-text-primary font-bold">+8 anos</span> construindo software para produção.</p>
+    <p class="text-text-secondary"><span class="text-text-primary font-bold">+14 anos</span> construindo software para produção.</p>
     <ul class="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-text-secondary">
       {stacks.map((s) => <li>{s}</li>)}
     </ul>
   </div>
 </section>
 ```
-NOTE: "+8 anos" is a placeholder — confirm real number with the user before launch (tracked in spec §10).
+NOTE: "+14 anos" is a placeholder — confirm real number with the user before launch (tracked in spec §10).
 
 - [ ] **Step 2: Create Pains (section 3)**
 
@@ -853,7 +853,7 @@ Use Playwright to navigate the live URL and screenshot Home, Serviços, Portfól
 ## Pre-launch content checklist (from spec §10)
 
 These placeholders MUST be resolved with the user before announcing the site:
-- [ ] Real years of experience (replace "+8 anos" in `Proof.astro`)
+- [ ] Real years of experience (replace "+14 anos" in `Proof.astro`)
 - [ ] Real WhatsApp number + contact email (`contato.astro`)
 - [ ] web3forms access key (`contato.astro`)
 - [ ] Profile photo + final About copy (`sobre.astro`)

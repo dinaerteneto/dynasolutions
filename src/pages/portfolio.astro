@@ -3,25 +3,48 @@ import Base from "../layouts/Base.astro";
 import { projects } from "../data/projects";
 ---
 <Base title="Portfólio · Dyna Solutions">
-  <section class="mx-auto max-w-4xl px-6 py-20">
-    <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Portfólio</h1>
-    <p class="mt-4 text-text-secondary" data-reveal>Alguns casos descritos de forma anonimizada quando sob sigilo.</p>
-    <div class="mt-12 space-y-6">
-      {projects.map((p) => (
-        <article id={p.slug} class="rounded-2xl border border-border-subtle bg-bg-raised p-8 scroll-mt-24" data-reveal>
-          <div class="flex items-center gap-3">
-            <h2 class="text-2xl font-bold">{p.name}</h2>
-            {p.anonymized && <span class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">anonimizado</span>}
-          </div>
-          <dl class="mt-4 space-y-3 text-sm">
-            <div><dt class="text-accent font-mono">Contexto</dt><dd class="text-text-secondary">{p.context}</dd></div>
-            <div><dt class="text-accent font-mono">Desafio</dt><dd class="text-text-secondary">{p.challenge}</dd></div>
-            <div><dt class="text-accent font-mono">Solução</dt><dd class="text-text-secondary">{p.solution}</dd></div>
-            <div><dt class="text-accent font-mono">Resultado</dt><dd class="text-text-primary">{p.result}</dd></div>
-          </dl>
-          <ul class="mt-4 flex flex-wrap gap-2">{p.stack.map((t) => <li class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">{t}</li>)}</ul>
-        </article>
-      ))}
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Coisas que construí</h1>
+    <p class="mt-4 text-text-secondary" data-reveal>Cases descritos de forma anonimizada quando sob sigilo.</p>
+
+    <div class="mt-16 space-y-28">
+      {projects.map((p, i) => {
+        const isEven = i % 2 === 0;
+        return (
+          <article id={p.slug} class="grid md:grid-cols-2 gap-6 md:gap-8 items-center scroll-mt-24" data-reveal>
+            <a href={p.url || `#${p.slug}`} class={`relative group rounded-2xl overflow-hidden border border-border-subtle bg-bg-deep aspect-video ${isEven ? "" : "md:order-2"}`}>
+              {p.screenshot ? (
+                <img src={p.screenshot} alt={p.name} class="w-full h-full object-cover group-hover:scale-105 transition duration-500 bg-bg-deep grayscale group-hover:grayscale-0" />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-text-muted font-mono text-sm bg-bg-deep">screenshot</div>
+              )}
+              <div class="absolute inset-0 bg-bg-base/30 group-hover:opacity-0 transition duration-500"></div>
+            </a>
+            <div class={`relative z-10 ${isEven ? "md:-ml-12 text-right" : "md:-mr-12 text-left"} ${!isEven ? "md:order-1" : ""}`}>
+              <p class="font-mono text-sm text-accent">{p.anonymized ? "Caso anonimizado" : "Projeto em destaque"}</p>
+              <div class={`flex items-center gap-3 mt-1 ${isEven ? "justify-end" : "justify-start"}`}>
+                <h2 class="text-2xl font-extrabold tracking-tight">
+                  <a href={p.url || `#${p.slug}`} class="hover:text-accent transition">{p.name}</a>
+                </h2>
+                {p.anonymized && <span class="font-mono text-xs text-text-muted border border-border-subtle rounded px-2 py-1">anonimizado</span>}
+              </div>
+              <div class="mt-4 rounded-2xl bg-bg-raised/90 backdrop-blur p-6 border border-border-subtle">
+                <dl class="space-y-3 text-sm">
+                  <div><dt class="text-accent font-mono text-xs tracking-wide">CONTEXTO</dt><dd class="text-text-secondary mt-1">{p.context}</dd></div>
+                  <div><dt class="text-accent font-mono text-xs tracking-wide">DESAFIO</dt><dd class="text-text-secondary mt-1">{p.challenge}</dd></div>
+                  <div><dt class="text-accent font-mono text-xs tracking-wide">SOLUÇÃO</dt><dd class="text-text-secondary mt-1">{p.solution}</dd></div>
+                  <div><dt class="text-accent font-mono text-xs tracking-wide">RESULTADO</dt><dd class="text-text-primary mt-1">{p.result}</dd></div>
+                </dl>
+              </div>
+              <ul class={`mt-4 flex flex-wrap gap-x-3 gap-y-1 ${isEven ? "justify-end" : "justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
+              <div class={`mt-4 flex gap-4 ${isEven ? "justify-end" : "justify-start"}`}>
+                {p.url && <a href={p.url} target="_blank" class="text-accent hover:underline text-sm font-mono">Live →</a>}
+              </div>
+            </div>
+          </article>
+        );
+      })}
     </div>
   </section>
 </Base>
+

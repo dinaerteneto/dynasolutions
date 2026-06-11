@@ -1,9 +1,9 @@
 ---
 const pains = [
-  { p: "Seu MVP trava antes de sair do papel?", s: "Desenvolvimento de produto sob escopo fechado." },
-  { p: "Falta um sênior pra destravar a arquitetura do time?", s: "Squad de um + diagnóstico técnico." },
-  { p: "Processos manuais consumindo horas da equipe?", s: "Automação & integração de sistemas." },
-  { p: "Insegurança sobre a qualidade/segurança do código?", s: "Diagnóstico técnico independente." },
+  { p: "Seu MVP trava antes de sair do papel?", s: "Desenvolvimento de produto sob escopo fechado.", icon: "M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" },
+  { p: "Falta um sênior pra destravar a arquitetura do time?", s: "Squad de um + diagnóstico técnico.", icon: "M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM3 20a6 6 0 0 1 12 0v1H3v-1z" },
+  { p: "Processos manuais consumindo horas da equipe?", s: "Automação & integração de sistemas.", icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 0 0 4.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 0 1-15.357-2m15.357 2H15" },
+  { p: "Insegurança sobre a qualidade/segurança do código?", s: "Diagnóstico técnico independente.", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
 ];
 ---
 <section class="mx-auto max-w-6xl px-6 py-20">
@@ -11,8 +11,15 @@ const pains = [
   <div class="mt-10 grid sm:grid-cols-2 gap-4">
     {pains.map((x) => (
       <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6" data-reveal>
-        <p class="font-semibold text-text-primary">{x.p}</p>
-        <p class="mt-2 text-text-secondary flex items-start gap-2"><span class="text-accent">→</span>{x.s}</p>
+        <div class="flex items-start gap-4">
+          <svg class="w-10 h-10 text-accent shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d={x.icon}/>
+          </svg>
+          <div>
+            <p class="font-semibold text-text-primary">{x.p}</p>
+            <p class="mt-2 text-text-secondary flex items-start gap-2"><span class="text-accent">→</span>{x.s}</p>
+          </div>
+        </div>
       </div>
     ))}
   </div>

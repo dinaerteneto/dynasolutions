@@ -1,12 +1,21 @@
 ---
 import { services } from "../../data/services";
 import SectionHeading from "../SectionHeading.astro";
+const icons = {
+  mvp: "M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z",
+  squad: "M12 4.354a4 4 0 1 1 0 5.292M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2m12-7h8m-4-4v8",
+  automacao: "M13 10V3L4 14h7v7l9-11h-7z",
+  diagnostico: "M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z",
+};
 ---
 <section id="servicos" class="mx-auto max-w-6xl px-6 py-20">
-  <SectionHeading num="02" title="Serviços" />
+  <SectionHeading num="01" title="Serviços" />
   <div class="mt-0 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
     {services.map((s) => (
       <a href={`/servicos#${s.slug}`} class="group rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+        <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d={icons[s.slug as keyof typeof icons] || icons.diagnostico}/>
+        </svg>
         <h3 class="font-bold text-text-primary">{s.title}</h3>
         <p class="mt-2 text-sm text-text-secondary">{s.tagline}</p>
         <span class="mt-4 inline-block text-accent text-sm opacity-0 group-hover:opacity-100 transition">Saiba mais →</span>
