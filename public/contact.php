@@ -64,7 +64,7 @@ try {
     $mail->CharSet = 'UTF-8';
 
     $mail->setFrom($config['from'], $config['from_name']);
-    $mail->addAddress($config['from']);
+    $mail->addAddress($config['to'], $config['to_name']);
     $mail->addReplyTo($email, $name);
 
     $mail->Subject = 'Novo contato pelo site Dyna Solutions';

@@ -8,4 +8,6 @@ return [
     'password' => '',
     'from'     => 'no-reply@dynasolutions.com.br',
     'from_name' => 'Dyna Solutions',
+    'to'       => 'contato@dynasolutions.com.br',
+    'to_name'  => 'Dyna Solutions - Contato',
 ];
