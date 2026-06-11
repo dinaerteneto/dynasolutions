@@ -1,15 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
-const WHATSAPP = "5500000000000"; // NOTE: replace with real number before launch
-const EMAIL = "contato@dynasolutions.com.br"; // NOTE: confirm address
+const WHATSAPP = "5579981393307";
+const EMAIL = "contato@dynasolutions.com.br";
 ---
 <Base title="Contato · Dyna Solutions">
   <section class="mx-auto max-w-2xl px-6 py-16 sm:py-20">
     <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Vamos conversar</h1>
     <p class="mt-4 text-text-secondary" data-reveal>Conte seu desafio. Respondo pessoalmente.</p>
-    <form action="https://api.web3forms.com/submit" method="POST" class="mt-10 space-y-4" data-reveal>
-      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY" />
-      <input type="hidden" name="subject" value="Novo contato pelo site Dyna Solutions" />
+
+    <div id="form-feedback" class="hidden mt-6 rounded-xl border p-4 text-sm font-medium"></div>
+
+    <form action="/contact.php" method="POST" class="mt-10 space-y-4" data-reveal id="form">
+      <input type="text" name="_website" class="hidden" tabindex="-1" autocomplete="off" />
       <input required name="name" placeholder="Seu nome" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
       <input required type="email" name="email" placeholder="Seu e-mail" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
       <textarea required name="message" rows="5" placeholder="Seu desafio / projeto" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent"></textarea>
@@ -21,3 +23,20 @@ const EMAIL = "contato@dynasolutions.com.br"; // NOTE: confirm address
     </div>
   </section>
 </Base>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const fb = document.getElementById("form-feedback");
+  if (params.get("status") === "success") {
+    fb.className = "mt-6 rounded-xl border p-4 text-sm font-medium text-accent border-accent/40 bg-accent/10";
+    fb.textContent = "Mensagem enviada com sucesso! Responderei em até 24h.";
+    fb.classList.remove("hidden");
+    history.replaceState(null, "", "/contato");
+  } else if (params.get("status") === "error") {
+    const msg = params.get("msg") || "Erro ao enviar. Tente novamente.";
+    fb.className = "mt-6 rounded-xl border p-4 text-sm font-medium text-red-400 border-red-400/40 bg-red-400/10";
+    fb.textContent = msg;
+    fb.classList.remove("hidden");
+    history.replaceState(null, "", "/contato");
+  }
+</script>

@@ -1,5 +1,7 @@
 .superpowers/
 node_modules/
+vendor/
 dist/
 .DS_Store
 docs/
+config/email.php
