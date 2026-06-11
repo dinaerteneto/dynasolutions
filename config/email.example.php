@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'host'     => 'smtp.locaweb.com.br',
-    'port'     => 587,
-    'encryption' => 'tls',
-    'username' => 'contato@dynasolutions.com.br',
-    'password' => 'kJ72\W*3Hd2Q',
-    'from'     => 'contato@dynasolutions.com.br',
+    'host'     => 'email-ssl.com.br',
+    'port'     => 465,
+    'encryption' => 'smtps',
+    'username' => 'no-reply@dynasolutions.com.br',
+    'password' => '',
+    'from'     => 'no-reply@dynasolutions.com.br',
     'from_name' => 'Dyna Solutions',
 ];
