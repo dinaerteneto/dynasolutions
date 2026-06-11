@@ -5,10 +5,10 @@ const featured = projects.slice(0, 3);
 ---
 
 <section class="bg-bg-deep/40 border-y border-border-subtle">
-  <div class="mx-auto max-w-6xl px-6 py-20">
+  <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
     <SectionHeading num="02" title="Coisas que construí" />
 
-    <div class="mt-10 space-y-24">
+    <div class="mt-10 space-y-16 sm:space-y-24">
       {featured.map((p, i) => {
         const isEven = i % 2 === 0;
         return (
@@ -21,7 +21,7 @@ const featured = projects.slice(0, 3);
               )}
               <div class="absolute inset-0 bg-bg-base/30 group-hover:opacity-0 transition duration-500"></div>
             </a>
-            <div class={`relative z-10 ${isEven ? "md:-ml-12 text-right" : "md:-mr-12 text-left"} ${!isEven ? "md:order-1" : ""}`}>
+            <div class={`relative z-10 ${isEven ? "md:-ml-12 md:text-right" : "md:-mr-12 md:text-left"} ${!isEven ? "md:order-1" : ""}`}>
               <p class="font-mono text-sm text-accent">{p.anonymized ? "Caso anonimizado" : "Projeto em destaque"}</p>
               <h3 class="mt-1 text-2xl font-extrabold tracking-tight">
                 <a href={p.url || `/portfolio#${p.slug}`} class="hover:text-accent transition">{p.name}</a>
@@ -30,8 +30,8 @@ const featured = projects.slice(0, 3);
                 <p class="text-text-secondary text-sm leading-relaxed">{p.context}</p>
                 <p class="mt-3 text-text-secondary text-sm leading-relaxed"><span class="text-accent font-semibold">Resultado:</span> {p.result}</p>
               </div>
-              <ul class={`mt-4 flex flex-wrap gap-2 ${isEven ? "justify-end" : "justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
-              <div class={`mt-3 flex gap-4 ${isEven ? "justify-end" : "justify-start"}`}>
+              <ul class={`mt-4 flex flex-wrap gap-2 ${isEven ? "md:justify-end" : "md:justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
+              <div class={`mt-3 flex gap-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
                 {p.url && <a href={p.url} target="_blank" class="text-accent hover:underline text-sm font-mono">Live →</a>}
                 <a href={`/portfolio#${p.slug}`} class="text-text-secondary hover:text-accent transition text-sm font-mono">Detalhes →</a>
               </div>

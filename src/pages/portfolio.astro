@@ -3,11 +3,11 @@ import Base from "../layouts/Base.astro";
 import { projects } from "../data/projects";
 ---
 <Base title="Portfólio · Dyna Solutions">
-  <section class="mx-auto max-w-6xl px-6 py-20">
+  <section class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
     <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Coisas que construí</h1>
     <p class="mt-4 text-text-secondary" data-reveal>Cases descritos de forma anonimizada quando sob sigilo.</p>
 
-    <div class="mt-16 space-y-28">
+    <div class="mt-16 space-y-16 lg:space-y-28">
       {projects.map((p, i) => {
         const isEven = i % 2 === 0;
         return (
@@ -20,9 +20,9 @@ import { projects } from "../data/projects";
               )}
               <div class="absolute inset-0 bg-bg-base/30 group-hover:opacity-0 transition duration-500"></div>
             </a>
-            <div class={`relative z-10 ${isEven ? "md:-ml-12 text-right" : "md:-mr-12 text-left"} ${!isEven ? "md:order-1" : ""}`}>
+            <div class={`relative z-10 ${isEven ? "md:-ml-12 md:text-right" : "md:-mr-12 md:text-left"} ${!isEven ? "md:order-1" : ""}`}>
               <p class="font-mono text-sm text-accent">{p.anonymized ? "Caso anonimizado" : "Projeto em destaque"}</p>
-              <div class={`flex items-center gap-3 mt-1 ${isEven ? "justify-end" : "justify-start"}`}>
+              <div class={`flex items-center gap-3 mt-1 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
                 <h2 class="text-2xl font-extrabold tracking-tight">
                   <a href={p.url || `#${p.slug}`} class="hover:text-accent transition">{p.name}</a>
                 </h2>
@@ -36,8 +36,8 @@ import { projects } from "../data/projects";
                   <div><dt class="text-accent font-mono text-xs tracking-wide">RESULTADO</dt><dd class="text-text-primary mt-1">{p.result}</dd></div>
                 </dl>
               </div>
-              <ul class={`mt-4 flex flex-wrap gap-x-3 gap-y-1 ${isEven ? "justify-end" : "justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
-              <div class={`mt-4 flex gap-4 ${isEven ? "justify-end" : "justify-start"}`}>
+              <ul class={`mt-4 flex flex-wrap gap-x-3 gap-y-1 ${isEven ? "md:justify-end" : "md:justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
+              <div class={`mt-4 flex gap-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
                 {p.url && <a href={p.url} target="_blank" class="text-accent hover:underline text-sm font-mono">Live →</a>}
               </div>
             </div>

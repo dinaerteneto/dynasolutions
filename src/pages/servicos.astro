@@ -9,11 +9,11 @@ const details: Record<string, string> = {
 };
 ---
 <Base title="Serviços · Dyna Solutions">
-  <section class="mx-auto max-w-4xl px-6 py-20">
+  <section class="mx-auto max-w-4xl px-6 py-16 sm:py-20">
     <h1 class="text-4xl font-extrabold tracking-tight" data-reveal>Serviços</h1>
     <div class="mt-12 space-y-6">
       {services.map((s) => (
-        <article id={s.slug} class="rounded-2xl border border-border-subtle bg-bg-raised p-8 scroll-mt-24" data-reveal>
+        <article id={s.slug} class="rounded-2xl border border-border-subtle bg-bg-raised p-6 md:p-8 scroll-mt-24" data-reveal>
           <h2 class="text-2xl font-bold">{s.title}</h2>
           <p class="mt-2 text-accent">{s.tagline}</p>
           <p class="mt-4 text-text-secondary">{details[s.slug]}</p>
