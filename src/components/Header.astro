@@ -1,9 +1,10 @@
 ---
 import Wordmark from "./Wordmark.astro";
 const links = [
-  { href: "/#servicos", num: "01", label: "Serviços" },
-  { href: "/portfolio", num: "02", label: "Portfólio" },
-  { href: "/sobre", num: "03", label: "Sobre" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/micro-saas", label: "Micro-SaaS" },
+  { href: "/portfolio", label: "Portfólio" },
+  { href: "/sobre", label: "Sobre" },
 ];
 ---
 <header id="site-header" class="sticky top-0 z-50 backdrop-blur bg-bg-base/80">
@@ -18,9 +19,7 @@ const links = [
     </button>
     <div id="nav-desktop" class="hidden md:flex md:items-center md:gap-8 font-mono text-sm">
       {links.map((l) => (
-        <a href={l.href} class="nav-link text-text-secondary hover:text-accent transition">
-          <span class="text-accent">{l.num}.</span> {l.label}
-        </a>
+        <a href={l.href} class="nav-link text-text-secondary hover:text-accent transition">{l.label}</a>
       ))}
       <a href="/contato" class="text-accent border border-accent rounded px-4 py-2 hover:bg-accent/10 transition">Contato</a>
     </div>
@@ -33,9 +32,7 @@ const links = [
     </svg>
   </button>
   {links.map((l) => (
-    <a href={l.href} class="nav-link text-2xl font-semibold text-text-secondary hover:text-accent transition">
-      <span class="text-accent font-mono text-lg">{l.num}.</span> {l.label}
-    </a>
+    <a href={l.href} class="nav-link text-2xl font-semibold text-text-secondary hover:text-accent transition">{l.label}</a>
   ))}
   <a href="/contato" class="text-accent border-2 border-accent rounded px-8 py-3 hover:bg-accent/10 transition text-lg font-semibold">Contato</a>
 </div>

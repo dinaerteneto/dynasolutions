@@ -47,7 +47,7 @@ export const projects: Project[] = [
     solution: "Arquitetura SOLID com Laravel 12 + React + PWA. Use Cases e Repositories separando responsabilidades. Multi-tenancy por tenant_id, notificações push Web Push, reCAPTCHA e integração WhatsApp.",
     result: "Plataforma SaaS em produção rodando em Docker, com frontend PWA (funciona como app nativo no celular), multi-loja isolada e checkout simplificado via WhatsApp.",
     stack: ["Laravel", "React", "TypeScript", "MySQL", "PWA", "WhatsApp API"],
-    screenshot: "/portfolio-vestezap.png",
+    screenshot: "/portfolio-vestezap.png", url: "https://vestezap.dynasolutions.com.br/",
   },
 
 ];

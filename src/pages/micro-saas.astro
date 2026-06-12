@@ -1,0 +1,159 @@
+---
+import Base from "../layouts/Base.astro";
+import { projects } from "../data/projects";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const slugs = new Set(["sisnanceiro", "vestezap"]);
+const produtos = projects.filter((p) => slugs.has(p.slug));
+---
+
+<Base title="Micro-SaaS · Dyna Solutions">
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="mx-auto max-w-6xl px-6 pt-16 sm:pt-24 pb-12 sm:pb-16">
+      <p class="font-mono text-base text-accent tracking-wide" data-reveal style="transition-delay: 0ms">// produtos digitais enxutos</p>
+      <h1 class="mt-4 text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] max-w-3xl" data-reveal style="transition-delay: 100ms">
+        Eu construo o seu<br /><span class="text-accent">Micro-SaaS</span>.
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-text-secondary max-w-2xl leading-relaxed" data-reveal style="transition-delay: 200ms">
+        Do conceito ao deploy em semanas. Produto multi-tenant, com IA nativa e arquitetura que escala — sem
+        contratar time, sem inflar custos com agência.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4" data-reveal style="transition-delay: 300ms">
+        <a href="/contato" class="rounded-xl bg-accent text-accent-ink font-bold px-7 py-4 hover:brightness-110 transition">Quero meu Micro-SaaS →</a>
+        <a href="#produtos" class="rounded-xl border border-border-subtle px-7 py-4 font-semibold hover:bg-bg-raised transition">Ver produtos em produção</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que é -->
+  <section class="border-y border-border-subtle bg-bg-deep/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <SectionHeading title="Por que Micro-SaaS?" />
+      <div class="mt-10 grid sm:grid-cols-2 gap-6" data-reveal>
+        <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6 md:p-8">
+          <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          <h3 class="font-bold text-lg">Nicho, não massa</h3>
+          <p class="mt-2 text-text-secondary text-sm leading-relaxed">
+            Um Micro-SaaS resolve um problema específico de um público definido. Diferente de uma plataforma genérica,
+            ele nasce para ser o melhor em uma única coisa — e lucrativo antes de ser grande.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6 md:p-8">
+          <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z"/>
+          </svg>
+          <h3 class="font-bold text-lg">Produto, não projeto</h3>
+          <p class="mt-2 text-text-secondary text-sm leading-relaxed">
+            Nada de protótipos descartáveis. Entreguei Sisnanceiro e VesteZap como produtos reais: multi-tenancy,
+            IA integrada, PWA, deploy automatizado. O mesmo rigor de engenharia de um produto com funding de série A.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abordagem -->
+  <section class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div class="flex items-center gap-4 mb-12" data-reveal>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight whitespace-nowrap">O que você recebe</h2>
+        <span class="h-px bg-border-subtle flex-1"></span>
+      </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="group rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+        <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <h3 class="font-bold">Arquitetura real</h3>
+        <p class="mt-2 text-sm text-text-secondary">DDD, multi-tenancy, RLS e stack que escala sem explodir custos na nuvem.</p>
+      </div>
+      <div class="group rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+        <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>
+        </svg>
+        <h3 class="font-bold">Produto completo</h3>
+        <p class="mt-2 text-sm text-text-secondary">Dashboard, auth, onboarding, notificações e pagamento — pronto pra vender.</p>
+      </div>
+      <div class="group rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+        <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a4 4 0 0 1 4 4v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h2V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/>
+        </svg>
+        <h3 class="font-bold">IA nativa</h3>
+        <p class="mt-2 text-sm text-text-secondary">Categorização, assistentes conversacionais, classificação — integrada de forma invisível.</p>
+      </div>
+      <div class="group rounded-2xl border border-border-subtle bg-bg-raised p-6 hover:bg-bg-hover transition" data-reveal>
+        <svg class="w-8 h-8 text-accent mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c2.67 0 4.83-4.03 4.83-9S14.67 3 12 3m0 18C9.33 21 7.17 16.97 7.17 12S9.33 3 12 3m-9 9a9 9 0 0 1 9-9"/>
+        </svg>
+        <h3 class="font-bold">Operação lean</h3>
+        <p class="mt-2 text-sm text-text-secondary">CI/CD, monitoramento, suporte. Você cuida do negócio, eu cuido da plataforma.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos em produção -->
+  <section id="produtos" class="border-y border-border-subtle bg-bg-deep/40">
+    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div class="flex items-center gap-4 mb-12" data-reveal>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight whitespace-nowrap">Em produção</h2>
+        <span class="h-px bg-border-subtle flex-1"></span>
+      </div>
+      <p class="-mt-8 mb-12 text-text-secondary" data-reveal>Micro-SaaS que construí do zero e estão rodando hoje.</p>
+      <div class="space-y-20 sm:space-y-28">
+        {produtos.map((p, i) => {
+          const isEven = i % 2 === 0;
+          return (
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center" data-reveal>
+              <a href={p.url!} target="_blank" class={`relative group rounded-2xl overflow-hidden border border-border-subtle bg-bg-deep aspect-video ${isEven ? "" : "md:order-2"}`}>
+                {p.screenshot ? (
+                  <img src={p.screenshot} alt={p.name} class="w-full h-full object-cover group-hover:scale-105 transition duration-500 bg-bg-deep grayscale group-hover:grayscale-0" />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-text-muted font-mono text-sm bg-bg-deep">screenshot</div>
+                )}
+                <div class="absolute inset-0 bg-bg-base/30 group-hover:opacity-0 transition duration-500"></div>
+              </a>
+              <div class={`relative z-10 ${isEven ? "md:-ml-12 md:text-right" : "md:-mr-12 md:text-left"} ${!isEven ? "md:order-1" : ""}`}>
+                <p class="font-mono text-sm text-accent">Micro-SaaS</p>
+                <div class={`flex items-center gap-3 mt-1 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
+                  <h2 class="text-2xl font-extrabold tracking-tight">
+                    <a href={p.url!} target="_blank" class="hover:text-accent transition">{p.name}</a>
+                  </h2>
+                </div>
+                <div class="mt-4 rounded-2xl bg-bg-raised/90 backdrop-blur p-6 border border-border-subtle">
+                  <dl class="space-y-3 text-sm">
+                    <div><dt class="text-accent font-mono text-xs tracking-wide">CONTEXTO</dt><dd class="text-text-secondary mt-1">{p.context}</dd></div>
+                    <div><dt class="text-accent font-mono text-xs tracking-wide">DESAFIO</dt><dd class="text-text-secondary mt-1">{p.challenge}</dd></div>
+                    <div><dt class="text-accent font-mono text-xs tracking-wide">SOLUÇÃO</dt><dd class="text-text-secondary mt-1">{p.solution}</dd></div>
+                    <div><dt class="text-accent font-mono text-xs tracking-wide">RESULTADO</dt><dd class="text-text-primary mt-1">{p.result}</dd></div>
+                  </dl>
+                </div>
+                <ul class={`mt-4 flex flex-wrap gap-x-3 gap-y-1 ${isEven ? "md:justify-end" : "md:justify-start"}`}>{p.stack.map((t) => <li class="font-mono text-xs text-text-muted">{t}</li>)}</ul>
+                <div class={`mt-4 flex gap-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
+                  {p.url && <a href={p.url} target="_blank" class="text-accent hover:underline text-sm font-mono">Live →</a>}
+                  <a href={`/portfolio#${p.slug}`} class="text-text-secondary hover:text-accent transition text-sm font-mono">Detalhes →</a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+    <div class="relative overflow-hidden rounded-3xl border border-border-subtle bg-bg-raised p-6 sm:p-12 text-center" data-reveal>
+      <div class="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 h-[300px] w-[500px] rounded-full" style="background: radial-gradient(circle, rgba(45,212,191,0.12), transparent 70%);"></div>
+      <h2 class="relative text-2xl sm:text-4xl font-extrabold tracking-tight">Tem uma ideia? Vamos construir.</h2>
+      <p class="relative mt-4 text-text-secondary max-w-xl mx-auto">Eu projeto, desenvolvo e coloco no ar. Você valida com o mercado, eu cuido da engenharia.</p>
+      <div class="relative mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/contato" class="rounded-xl bg-accent text-accent-ink font-bold px-7 py-4 hover:brightness-110 transition">Quero meu Micro-SaaS →</a>
+        <a href="/portfolio" class="rounded-xl border border-border-subtle px-7 py-4 font-semibold hover:bg-bg-hover transition">Ver portfólio completo</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

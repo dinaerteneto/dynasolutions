@@ -1,5 +1,4 @@
 ---
-import SectionHeading from "../SectionHeading.astro";
 const steps = [
   { n: "01", t: "Diagnóstico", d: "Entendo o problema e o contexto antes de propor solução." },
   { n: "02", t: "Tech spec", d: "Traduzo requisitos em um plano técnico claro e acordado." },
@@ -8,7 +7,10 @@ const steps = [
 ];
 ---
 <section class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-  <SectionHeading num="03" title="Como eu trabalho" />
+  <div class="flex items-center gap-4 mb-12" data-reveal>
+    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight whitespace-nowrap">Como eu trabalho</h2>
+    <span class="h-px bg-border-subtle flex-1"></span>
+  </div>
   <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
     {steps.map((s) => (
       <div class="rounded-2xl border border-border-subtle bg-bg-raised p-6" data-reveal>
