@@ -15,7 +15,7 @@ const EMAIL = "contato@dynasolutions.com.br";
       <input required name="name" placeholder="Seu nome" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
       <input required type="email" name="email" placeholder="Seu e-mail" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent" />
       <textarea required name="message" rows="5" placeholder="Seu desafio / projeto" class="w-full rounded-xl bg-bg-raised border border-border-subtle px-4 py-3 outline-none focus:border-accent"></textarea>
-      <button type="submit" class="rounded-xl bg-accent text-accent-ink font-bold px-6 py-3 hover:brightness-110 transition">Enviar →</button>
+      <button type="submit" id="submit-btn" class="rounded-xl bg-accent text-accent-ink font-bold px-6 py-3 hover:brightness-110 transition disabled:opacity-60 disabled:cursor-not-allowed">Enviar →</button>
     </form>
     <div class="mt-8 flex flex-wrap gap-4 text-sm" data-reveal>
       <a href={`https://wa.me/${WHATSAPP}`} class="text-accent hover:underline">WhatsApp</a>
@@ -39,4 +39,13 @@ const EMAIL = "contato@dynasolutions.com.br";
     fb.classList.remove("hidden");
     history.replaceState(null, "", "/contato");
   }
+
+  // Trava o botão ao enviar (evita duplo envio e dá feedback)
+  const form = document.getElementById("form") as HTMLFormElement | null;
+  const btn = document.getElementById("submit-btn") as HTMLButtonElement | null;
+  form?.addEventListener("submit", () => {
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = "Enviando…";
+  });
 </script>

@@ -61,6 +61,7 @@ try {
     $mail->Password = $config['password'];
     $mail->SMTPSecure = $config['encryption'];
     $mail->Port = $config['port'];
+    $mail->Timeout = 15; // falha rápido em vez de pendurar até 300s
     $mail->CharSet = 'UTF-8';
 
     $mail->setFrom($config['from'], $config['from_name']);
