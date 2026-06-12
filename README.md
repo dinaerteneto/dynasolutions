@@ -43,11 +43,25 @@ Após clonar o repositório, execute estes comandos no terminal, na pasta raiz:
 
 ## 📧 Configuração de E-mail
 
-O formulário de contato envia e-mails via SMTP com PHPMailer.
+O formulário de contato envia e-mails via SMTP com PHPMailer, usando a caixa
+`no-reply@dynasolutions.com.br` (Locaweb) e entregando em `contato@dynasolutions.com.br`.
 
 1. Copie `config/email.example.php` para `config/email.php`
-2. Preencha a senha SMTP da conta `contato@dynasolutions.com.br`
-3. O arquivo `config/email.php` está no `.gitignore` — não commite a senha
+2. Preencha a senha SMTP da caixa `no-reply@dynasolutions.com.br`
+3. O arquivo `config/email.php` está no `.gitignore` — **não commite a senha**
+
+### SMTP da Locaweb
+
+| Campo | Valor |
+| :--- | :--- |
+| `host` | `email-ssl.com.br` |
+| `port` | `465` |
+| `encryption` | **`ssl`** |
+
+> ⚠️ **Gotcha:** na porta **465** o `encryption` tem que ser **`ssl`** (SSL implícito).
+> Se ficar `tls` (que é STARTTLS, da porta 587), o PHPMailer **pendura** até dar
+> timeout e o e-mail não sai. O `contact.php` tem `Timeout = 15s` pra falhar rápido
+> caso isso aconteça.
 
 ## 🎨 Design System e Estilização
 
@@ -58,13 +72,37 @@ As variáveis de cor (como `--color-bg-base`, `--color-accent`) refletem diretam
 
 O front-end é gerado como SSG em `dist/`. O formulário de contato usa `/contact.php`, que requer PHP no servidor.
 
-### Shared hosting (LocaWeb)
+### Shared hosting (Locaweb) — via FTP
 
-1. Faça o build: `npm run build`
-2. Envie todo o conteúdo do repositório (exceto `node_modules/` e `dist/` já vai na pasta certa) para o servidor via FTP
-3. Aponte o document root para a pasta `dist/`
-4. Configure a senha SMTP em `config/email.php` (copie de `config/email.example.php`)
-5. Certifique-se de que o `vendor/` gerado pelo Composer está presente no servidor
+O docroot é a `public_html/`. Como o `contact.php` procura `../vendor` e `../config`
+(relativo a si mesmo), essas pastas ficam **um nível ACIMA** do docroot — assim a
+senha em `config/email.php` **não fica acessível pela web**.
+
+Estrutura no servidor:
+
+```text
+/ (raiz do FTP)
+├── public_html/          # docroot → conteúdo do dist/ vai AQUI
+│   ├── index.html
+│   ├── contact.php       # servido como /contact.php
+│   └── _astro/  contato/  servicos/  ...
+├── config/
+│   └── email.php         # com a senha + encryption 'ssl'  (acima do docroot)
+└── vendor/               # dependências do Composer (PHPMailer) (acima do docroot)
+```
+
+Passos:
+
+1. `npm run build` → gera `dist/`
+2. `composer install` → gera `vendor/` (só na 1ª vez ou quando mudar dependências PHP)
+3. Envie via FTP, **sobrescrevendo onde já está**:
+   - Conteúdo de **`dist/`** → `public_html/`
+   - **`config/email.php`** (com `encryption: 'ssl'`) → `config/` (um nível acima)
+   - **`vendor/`** → `vendor/` (um nível acima; só quando mudar deps)
+4. Teste em `https://dynasolutions.com.br/contato`
+
+> Para atualizar só o site (sem mexer em e-mail): basta `npm run build` + subir o
+> conteúdo de `dist/` pra `public_html/`. `config/` e `vendor/` não mudam.
 
 ### Static hosting (Cloudflare Pages / Vercel / Netlify)
 
